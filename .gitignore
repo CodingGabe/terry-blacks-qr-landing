@@ -42,7 +42,7 @@ dist/
 .vercel/
 .env*
 .DS_Store
-public/*.mp4
+# public/*.mp4
 public/*.mov
 public/*.webm
 *.psd
