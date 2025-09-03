@@ -1,0 +1,109 @@
+---
+import "../styles/global.css";
+const TITLE = "How to Order at Terry Black’s Barbecue";
+const DESC = "Watch this quick video and follow the simple steps to order like a pro.";
+const POSTER = "/how-to-poster.png"; // add a real image to /public
+const MP4 = "/tb-atx-how-to.mp4";     // add real video to /public (or swap for iframe embed)
+const VTT = "/captions.vtt";  // optional captions file in /public
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{TITLE}</title>
+    <meta name="description" content={DESC} />
+    <meta property="og:title" content={TITLE} />
+    <meta property="og:description" content={DESC} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og.jpg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="bg-neutral-50 text-neutral-900 antialiased">
+    <header class="max-w-3xl mx-auto px-4 py-8">
+      <img src="/tb-logo.png" alt="Terry Black’s Barbecue" class="h-20 mb-6" />
+      <h1 class="text-3xl font-bold tracking-tight">{TITLE}</h1>
+      <p class="mt-2 text-neutral-600">{DESC}</p>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 pb-20">
+      <!-- Video block -->
+      <section aria-labelledby="video-title" class="rounded-2xl overflow-hidden shadow-lg bg-black">
+        <!-- Option A: self-hosted video -->
+        <video
+          class="w-full h-auto"
+          controls
+          preload="metadata"
+          poster={POSTER}
+          playsinline
+        >
+          <source src={MP4} type="video/mp4" />
+          <!-- <source src="/video.webm" type="video/webm" /> -->
+          {VTT && <track kind="captions" src={VTT} srcLang="en" label="English" default />}
+          Sorry, your browser doesn’t support embedded videos.
+        </video>
+
+        <!-- Option B: swap the <video> above for a Vimeo/YouTube embed (remove poster above) -->
+        {false && (
+          <div class="aspect-video">
+            <iframe
+              class="w-full h-full"
+              src="https://player.vimeo.com/video/XXXXXXX?h=xxxx&title=0&byline=0&portrait=0"
+              title="How to Order at Terry Black’s Barbecue"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        )}
+      </section>
+
+      <!-- Steps -->
+      <section class="mt-10">
+        <h2 class="text-2xl font-semibold">Step-by-step</h2>
+        <ol class="mt-4 space-y-3 text-neutral-800">
+          <li class="flex gap-3">
+            <span class="flex-none h-7 w-7 rounded-full bg-neutral-900 text-white grid place-items-center font-semibold">1</span>
+            <p>Join the line and scan the menu overhead. Choose your meats by the **½ lb** or **by the slice**.</p>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-none h-7 w-7 rounded-full bg-neutral-900 text-white grid place-items-center font-semibold">2</span>
+            <p>Pick your **sides** and **fixins**. Tell the cutter exactly what you want—brisket lean or moist, ribs, sausage, etc.</p>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-none h-7 w-7 rounded-full bg-neutral-900 text-white grid place-items-center font-semibold">3</span>
+            <p>Grab drinks & dessert, then pay at the register. We’ll hand you everything fresh on butcher paper.</p>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-none h-7 w-7 rounded-full bg-neutral-900 text-white grid place-items-center font-semibold">4</span>
+            <p>Find a seat, sauce it how you like, and enjoy!</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Quick FAQ -->
+      <section class="mt-10">
+        <h2 class="text-2xl font-semibold">Quick answers</h2>
+        <dl class="mt-4 grid gap-6">
+          <div>
+            <dt class="font-medium">Do I order by weight?</dt>
+            <dd class="text-neutral-700">Yes. Most meats are by the ¼ or ½ pound. Sandwiches available too.</dd>
+          </div>
+          <div>
+            <dt class="font-medium">Can I sample?</dt>
+            <dd class="text-neutral-700">Kindly ask the cutter if we can, we will.</dd>
+          </div>
+          <div>
+            <dt class="font-medium">What’s popular?</dt>
+            <dd class="text-neutral-700">Brisket (moist), beef rib (limited daily), and jalapeño cheddar sausage.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- Footer / Location note -->
+      <footer class="mt-12 border-t pt-6 text-sm text-neutral-500">
+        <p>© {new Date().getFullYear()} Terry Black’s Barbecue</p>
+      </footer>
+    </main>
+  </body>
+</html>
